@@ -6,6 +6,8 @@ An independent film journal for discovering a small catalog, saving a watchlist,
 
 The design uses oversized editorial type, original CSS graphic covers, warm paper, forest green, and an intentionally limited catalog. All 20 films, directors, descriptions, and release details are fictional demo content. These are not real streaming listings or licensed movie posters.
 
+![Frame discovery page](docs/images/dashboard.png)
+
 ## Run
 
 Node 22.13 or newer:
