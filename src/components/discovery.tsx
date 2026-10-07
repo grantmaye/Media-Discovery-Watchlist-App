@@ -16,7 +16,6 @@ const browseQuery = `query Browse($search:String,$genre:String,$sort:String,$aft
 function Poster({ title, large = false }: { title: Title; large?: boolean }) {
   return (
     <div className={`poster palette-${title.palette} motif-${title.motif} ${large ? 'large' : ''}`}>
-      <span className="poster-kicker">A FRAME ORIGINAL / SAMPLE FILM</span>
       <span className="poster-shape" />
       <span className="poster-shape second" />
       <div className="poster-type">{title.name}</div>
@@ -144,17 +143,12 @@ export default function Discovery() {
             Your watchlist <span>{count}</span>
           </button>
         </nav>
-        <span className="edition">
-          AN INDEPENDENT FILM JOURNAL
-          <br />
-          VOL. 01 / FICTIONAL CATALOG
-        </span>
+        <span className="edition">Fictional film catalog</span>
       </header>
       <main>
         {tab === 'discover' && featured && (
           <section className="hero">
             <div className="hero-copy">
-              <span className="eyebrow">THE EDITOR’S PICK / 001</span>
               <h1>
                 Stay for
                 <br />
@@ -185,17 +179,11 @@ export default function Discovery() {
             >
               <Poster title={featured} large />
             </button>
-            <div className="vertical-note">LESS SCROLLING. BETTER STORIES.</div>
           </section>
         )}
         <section className="catalog">
           <div className="catalog-heading">
             <div>
-              <span className="eyebrow">
-                {tab === 'discover'
-                  ? 'A SMALL CATALOG. A WIDE WORLD.'
-                  : 'YOUR VERY OWN DOUBLE FEATURE'}
-              </span>
               <h2>
                 {tab === 'discover' ? 'What are you in the mood for?' : 'Good stories, kept close.'}
               </h2>
@@ -336,7 +324,6 @@ export default function Discovery() {
           )}
         </section>
         <section className="editorial">
-          <span>THE FRAME PHILOSOPHY</span>
           <p>
             A watchlist should feel
             <br />
@@ -357,7 +344,6 @@ export default function Discovery() {
           <br />
           No streaming availability or real film metadata is implied.
         </p>
-        <span>BUILT FOR THE LOVE OF A GOOD STORY.</span>
       </footer>
       {selected && (
         <div className="overlay">
@@ -369,7 +355,7 @@ export default function Discovery() {
               <Poster title={selected} />
             </div>
             <div className="detail-copy">
-              <span className="eyebrow">
+              <span className="film-metadata">
                 {selected.genre} / {selected.year} / {selected.minutes} MIN
               </span>
               <h2>{selected.name}</h2>
