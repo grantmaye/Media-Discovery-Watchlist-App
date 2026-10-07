@@ -324,7 +324,6 @@ export default function Discovery() {
           )}
         </section>
         <section className="editorial">
-
           <p>
             A watchlist should feel
             <br />
@@ -345,7 +344,6 @@ export default function Discovery() {
           <br />
           No streaming availability or real film metadata is implied.
         </p>
-
       </footer>
       {selected && (
         <div className="overlay">

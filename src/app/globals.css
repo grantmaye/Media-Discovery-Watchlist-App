@@ -876,4 +876,8 @@ legend {
   }
 }
 
-.film-metadata { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.film-metadata {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
