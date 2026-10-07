@@ -8,6 +8,11 @@ The design uses oversized editorial type, original CSS graphic covers, warm pape
 
 ![Frame discovery page](docs/images/dashboard.png)
 
+## Learn this repository
+
+- [Technical manual](docs/technical-manual.md): architecture, contracts, setup, tests, failure labs, extension exercises with solutions, and interview preparation.
+- [Product story](docs/product-story.md): intended users, a hypothetical benefit scenario, limitations, and a 60–90 second demo.
+
 ## Run
 
 Node 22.13 or newer:
