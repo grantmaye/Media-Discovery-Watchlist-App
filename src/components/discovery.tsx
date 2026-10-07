@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDialog } from './use-dialog';
 import { ArrowDown, ArrowUpRight, Bookmark, Check, Plus, Search, Star, X } from 'lucide-react';
 import { request } from '@/lib/client';
@@ -43,11 +43,14 @@ export default function Discovery() {
     [featured, setFeatured] = useState<Title | null>(null);
   const closeDialog = useCallback(() => setSelected(null), []);
   useDialog(Boolean(selected), closeDialog);
+  const activeFilters = useRef({ search: '', genre: '', sort: 'CURATED', revision: 0 });
   async function load(after?: string) {
+    const filters = activeFilters.current;
     const r = await request<{ browse: Connection; library: LibraryEntry[]; genres: string[] }>(
       browseQuery,
-      { search, genre, sort, after },
+      { search: filters.search, genre: filters.genre, sort: filters.sort, after },
     );
+    if (filters.revision !== activeFilters.current.revision) return r;
     setConnection((c) =>
       after && c ? { ...r.browse, edges: [...c.edges, ...r.browse.edges] } : r.browse,
     );
@@ -56,6 +59,9 @@ export default function Discovery() {
     return r;
   }
   useEffect(() => {
+    activeFilters.current = { search, genre, sort, revision: activeFilters.current.revision + 1 };
+    // Hide the old cursor immediately; it belongs to a different set of filters.
+    setConnection(null);
     let alive = true;
     const timer = setTimeout(() => {
       request<{ browse: Connection; library: LibraryEntry[]; genres: string[] }>(browseQuery, {

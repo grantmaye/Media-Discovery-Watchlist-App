@@ -11,6 +11,7 @@ test('discovery pagination, filter-bound cursors, ratings, stale writes and remo
     w = crypto.randomUUID(),
     other = crypto.randomUUID(),
     api = createApi();
+  await api.start();
   try {
     await s.initialize(w);
     await s.initialize(other);
